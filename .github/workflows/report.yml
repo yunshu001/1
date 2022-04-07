@@ -1,0 +1,23 @@
+name: health report
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: windows-latest
+    steps:
+    - name: Health Report
+      uses: yizuodi/Health-Report@master
+      with:
+        netid: ${{secrets.NETID}}
+        password: ${{secrets.PASSWORD}}
+        app_id: ${{secrets.APP_ID}}
+        api_key: ${{secrets.API_KEY}}
+        secret_key: ${{secrets.SECRET_KEY}}
+        tg_bot_token: ${{secrets.TG_BOT_TOKEN}}
+        tg_chatid: ${{secrets.TG_CHATID}}
+        
